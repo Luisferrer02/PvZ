@@ -33,7 +33,9 @@ public class PlantsVsZombies {
 	public static void main(String[] args) {
 		// Required to avoid issues with tests
 		Locale.setDefault(new Locale("es", "ES"));
-
+		if (args.length == 0) {
+			args = new String[] { "EASY" };
+		}
 		if (args.length < 1 || args.length > 2) {
 			usage();
 			return;
@@ -56,7 +58,7 @@ public class PlantsVsZombies {
 
 			System.out.println(Messages.WELCOME);
 
-			Game game = new Game(25, Level.EASY);
+			Game game = new Game(seed, level);
 			Scanner scanner = new Scanner(System.in);
 			Controller controller = new Controller(game, scanner);
 			controller.run();
