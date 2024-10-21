@@ -39,9 +39,48 @@ Los gameobjects (Zombies, Soles, Plantas) Aparecen en el tablero con su abreviac
 
 ## Game Objects
 
-## Acciones
+### GameObject
+Es la clase padre que implementa GameItem y de la cual heredan todos los otros objetos del juego.
 
-## Logica
+### Plant
+Es la clase generica para las plantas. Cada planta tiene atributos y habilidades distintas
+#### CherryBomb, Peashooter, Sunflower, Wallnut
+
+### Sun
+Es la clase que representa los soles que hacen posible poner plantas.
+
+### Zombie
+Es la clase generica para los zombies. Cada tipo de zombie tiene atributos y habilidades distintas.
+#### BucketHead, CommonZombie, ExplosiveZombie, Sporty
+
+### PlantFactory y ZombieFactory
+Son las clases que aplican el patron factory para crear los distintos tipos de zombie y plantas.
+
+## Acciones
+Son las clases que implementan las acciones (por ejemplo, ExplosionAction) las cuales pueden aplicar a tanto zombies como plantas.
+
+## Lógica
+
+### Game
+Es la clase principal que maneja la lógica del juego. Se encarga de inicializar el juego, gestionar el bucle principal y coordinar las interacciones entre los diferentes componentes del juego.
+
+### GameItem
+Es la interfaz que representa un objeto genérico dentro del juego. Puede ser cualquier cosa que tenga una posición y pueda interactuar con otros objetos del juego.
+
+### GameObjectContainer
+Es un contenedor para los objetos del juego. Se encarga de almacenar y gestionar múltiples `GameItem` y facilita su acceso y manipulación.
+
+### GameStatus
+Mantiene el estado actual del juego, como la puntuación, el nivel y otras estadísticas relevantes. Es esencial para guardar y recuperar el progreso del jugador.
+
+### GameWorld
+Representa el mundo del juego. Define el entorno en el que se desarrolla el juego y contiene todos los objetos y entidades que existen en ese mundo.
+
+### SunsManager
+Gestiona los recursos solares en el juego. Es responsable de generar, recolectar y contabilizar los puntos de sol que los jugadores pueden usar para realizar acciones.
+
+### ZombieManager
+Se encarga de gestionar los zombis en el juego. Controla la aparición, el movimiento y las interacciones de los zombis con otros objetos del juego.
 
 ## Commands
 
@@ -60,5 +99,7 @@ El juego implementa el patrón de diseño software "Command", y por tanto el con
 Rec[o]rd: mostrar el récord del nivel actual
 
 ## Record
+La clase record se encarga de gestionar el fichero record.txt, donde se muestran las puntuaciones mas altas del jugador en los distintos niveles del juego.
 
 ## Exceptions
+Son las clases que atrapan las distintas excepciones que pueden darse, ocmo por ejemlo un comando incorrecto o una posicion no valida.
